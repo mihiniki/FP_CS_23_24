@@ -5,12 +5,12 @@
 [X] If you don't have access to Moodle, write me an email as soon as possible: 5mi0800082@g.fmi.uni-sofia.bg .
 [X] Walk around the GitHub page.
 [X] Here is a timeline THAT MIGHT CHANGE:
-        - homework 1: week 03 (2 programming tasks)
-        - homework 2: week 06 (2 programming tasks)
-        - exam 1    : week 07 (8 theoretical questions + 4 programming tasks)
-        - homework 3: week 11 (2 programming tasks)
-        - homework 4: week 14 (2 programming tasks)
-        - exam 2    : week 15 (8 theoretical questions + 4 programming tasks)
+    - homework 1: week 03 (2 programming tasks)
+    - homework 2: week 06 (2 programming tasks)
+    - exam 1    : week 07 (8 theoretical questions + 4 programming tasks)
+    - homework 3: week 11 (2 programming tasks)
+    - homework 4: week 14 (2 programming tasks)
+    - exam 2    : week 15 (8 theoretical questions + 4 programming tasks)
 
 - !! bracket overflow 😄 !!
 - Racket is PREFIX, i.e. first write the procedure and then write its arguments
