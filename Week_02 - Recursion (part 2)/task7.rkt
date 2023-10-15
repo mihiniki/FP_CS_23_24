@@ -16,3 +16,4 @@ Assume correct input.
 (equal? (perfect? 33550336) #t)
 (equal? (perfect? 495) #f)
 (equal? (perfect? 1) #f)
+ 

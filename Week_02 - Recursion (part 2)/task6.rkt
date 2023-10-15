@@ -16,3 +16,4 @@ If the number is negative return 0.
 (= (sum-divs 6) 12) ; 1 + 2 + 3 + 6
 (= (sum-divs -6) 0)
 (= (sum-divs 12345) 19776)
+ 

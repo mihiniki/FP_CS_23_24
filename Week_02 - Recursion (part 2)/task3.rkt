@@ -9,6 +9,6 @@ Assume correct input.
 (define (sum-digits-rec)
 
 )
-
+ 
 (= (sum-digits-rec 123) 6)
 (= (sum-digits-rec 12345) 15)

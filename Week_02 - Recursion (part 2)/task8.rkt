@@ -9,8 +9,8 @@ the digits of the non-negative n are ordered in an ascending order.
 )
 
 (define (inc-digits-no-if? n)
-)
-
+) 
+ 
 (equal? (inc-digits-no-if? 1244) #t)
 (equal? (inc-digits-no-if? 12443) #f)
 

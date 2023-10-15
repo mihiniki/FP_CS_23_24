@@ -10,7 +10,7 @@ and an iterative procedure for calculating "x" to the power of "n".
 )
 
 (define (pow-iter x n)
-
+ 
 )
 
 (= (pow-rec 2 5) 32)

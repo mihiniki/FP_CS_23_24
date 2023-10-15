@@ -380,4 +380,4 @@ In the second example a = 5, b = 3, n = 5. The resulting sequence is therefore s
 
 - s0 = 5 + 1x3 = 8
 - s1 = 5 + 1x3 + 2x3 = 14
-- s2 = 5 + 1x3 + 2x3 + 4x3 = 26 and so on.
+- s2 = 5 + 1x3 + 2x3 + 4x3 = 26 and so on. 

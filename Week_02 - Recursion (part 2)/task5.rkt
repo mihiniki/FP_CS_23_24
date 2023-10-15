@@ -16,3 +16,4 @@ Define a predicate that checks whether a number is prime.
 (equal? (num-prime? 6) #f)
 (equal? (num-prime? 42) #f)
 (equal? (num-prime? 61) #t)
+ 

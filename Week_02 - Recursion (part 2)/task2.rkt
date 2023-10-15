@@ -19,4 +19,4 @@ Define a predicate that checks whether a non-negative number is a palindrome.
 (equal? (palindrome? 12) #f)
 (equal? (palindrome? 120) #f)
 (equal? (palindrome? 12321) #t)
-(equal? (palindrome? 1221) #t)
+(equal? (palindrome? 1221) #t) 
