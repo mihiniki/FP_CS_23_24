@@ -8,7 +8,18 @@ If the number is negative return 0.
 |#
 
 (define (sum-divs n)
-
+  (define (helper d res)
+    (cond
+      [(> d n) res]
+      [(divides? d n) (helper (add1 d) (+ res d))]
+      [else (helper (add1 d) res)]
+      )
+    )
+  (if (negative? n)
+      0
+      (helper 1 0)
+      )
+  
 )
 
 (= (sum-divs 0) 0)

@@ -6,8 +6,11 @@ for calculating the sum of the digits of a positive number.
 Assume correct input.
 |#
 
-(define (sum-digits-rec)
-
+(define (sum-digits-rec n)
+  (if (zero? n)
+      0
+      (+ (remainder n 10)(sum-digits-rec (quotient n 10)))
+      )
 )
  
 (= (sum-digits-rec 123) 6)

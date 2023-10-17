@@ -9,7 +9,7 @@ Assume correct input.
 |#
 
 (define (perfect? n)
-
+  (= (- (divisor-sum n) n) n)
 )
 
 (equal? (perfect? 6) #t); 1 + 2 + 3
