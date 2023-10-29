@@ -7,7 +7,9 @@
 ; - accepts two procedures and returns their composition over an argument of a lambda procedure;
 ; - returns a procedure that is the partial application of f over x.
 
-
+(define (my-identity)
+  42
+  )
 
 (define (my-lambda f)
   42
@@ -26,6 +28,8 @@
   )
 
 ; write 2 tests for subtask 1
+
+(= (my-identity 5) 5)
 
 (= ((my-lambda identity) 5) 5)
 (equal? ((my-lambda identity) "Tensorflow") "Tensorflow")
