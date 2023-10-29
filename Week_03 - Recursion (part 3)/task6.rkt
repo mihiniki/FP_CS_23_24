@@ -8,8 +8,18 @@ continue reducing in this way until a single-digit number is produced.
 This is only applicable to the natural numbers.
 |#
 
+(define (sum-digits n)
+  (if (zero? n)
+      0
+      (+ (remainder n 10) (sum-digits (quotient n 10)))
+      )
+  )
+
 (define (digital-root n)
-  42
+  (if (< n 10)
+      n
+      (digital-root (sum-digits n))
+      )
   )
 
 (= (digital-root 16) 7)

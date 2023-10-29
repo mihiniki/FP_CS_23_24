@@ -5,7 +5,14 @@ Define a procedure that finds the maximum digit in a number.
 |#
 
 (define (find-max n)
-  42
+  (define (helper res leftover)
+    (cond
+      [(zero? leftover) res]
+      [(> (remainder leftover 10) res) (helper (remainder leftover 10) (quotient leftover 10))]
+      [else (helper res (quotient leftover 10))]
+      )
+    )
+  (helper 0 n)
   )
 
 (= (find-max 55345) 5)
