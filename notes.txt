@@ -199,7 +199,7 @@ Procedures:
 General
 	procedures without a name (anonymous)
 		called "arrow functions" in JS, TS, etc (Frontend Languages and Frameworks)
-		in 💓 Python3 💓 : lambda x : x + 1
+		in    Python3 : lambda x : x + 1
 		in    C++        : [](const int x) { return x + 1; } (if interested: https://www.youtube.com/watch?v=mWgmBBz0y8c)
 		in    Racket     : (λ (x) (add1 x))
 		in    Haskell    : (\ x -> x + 1)
