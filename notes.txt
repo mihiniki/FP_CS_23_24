@@ -189,8 +189,8 @@ Procedures:
 # Week_03 - Recursion (part 3)
 ###################################################################################################
 
-[ ] Test 1: 18.11.2023 (Saturday), 12 pm - 4 pm (part 1: 4 programming tasks, part 2: (usually) 8 theoretical questions).
-[ ] Test 2: 13.01.2024 (Saturday), 12 pm - 4 pm (part 1: 4 programming tasks, part 2: (usually) 8 theoretical questions).
+[X] Test 1: 18.11.2023 (Saturday), 12 pm - 4 pm (part 1: 4 programming tasks, part 2: (usually) 8 theoretical questions).
+[X] Test 2: 13.01.2024 (Saturday), 12 pm - 4 pm (part 1: 4 programming tasks, part 2: (usually) 8 theoretical questions).
 
 ###################################################################################################
 # Week_04 - Lambda Expressions
@@ -211,24 +211,24 @@ General
 		a procedure to be executed over those parameters
 	    	(λ (<parameters>) (<procedure>))
 
-	a lambda that adds 5 to a number: 
-		how would a test look like? 
+	a lambda that adds 5 to a number: (lambda (x) (+ x 5))
+		how would a test look like? ((lambda (x) (+ x 5)) 10)
 
-	a lambda-predicate that checks whether a number is greater than 10: 
-		how would a test look like? 
+	a lambda-predicate that checks whether a number is greater than 10: (lambda (x) (> x 10))
+		how would a test look like? ((lambda (x) (> x 10)) 100)
 
-	a lambda which adds three numbers: 
-		how would a test look like? 
+	a lambda which adds three numbers: (lambda (x y z) (+ x y z))
+		how would a test look like? ((lambda (x y z) (+ x y z)) 10 11 12)
 
-	What is an unary procedure? 
-		examples: 
+	What is an unary procedure? A procedure that accepts one argument.
+		examples: add1, sub1, not
 	
-    What is a binary procedure?
-		examples: 
+    What is a binary procedure? A procedure that accepts two arguments.
+		examples: expt, divides?, reminder
 
 Function Composition
-	Composition of f and g over x: 
-	We did it last time. Can you tell me which task it was?
+	Composition of f and g over x: f (g x)
+	We did it last time. Can you tell me which task it was? digital-root
         
 
 Partial Application
@@ -252,5 +252,12 @@ Applicative and normal order evaluation
     In applicative order execution, all procedure arguments are evaluated before applying the procedure. In normal order execution, procedure arguments are evaluated after applying the procedure, and then only if the result is needed to complete the evaluation of the procedure.
 
     What type of evaluation does C++ have? applicative
+
+    int f(const int y, const double z) {
+        return y + z;
+    }
+
+    f(n1 + n2, g(42))
+
     What type of evaluation does Racket have? applicative
     What type of evaluation does Haskell have? normal

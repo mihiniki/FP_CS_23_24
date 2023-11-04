@@ -6,7 +6,7 @@
 ; that subtracts f(x) from f(y).
 
 (define (difference f)
-  42
+  (λ (x y) (- (f y) (f x)))
   )
 
 ; explain closure

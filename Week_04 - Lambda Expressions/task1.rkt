@@ -7,37 +7,36 @@
 ; - accepts two procedures and returns their composition over an argument of a lambda procedure;
 ; - returns a procedure that is the partial application of f over x.
 
-(define (my-identity)
-  42
-  )
-
-(define (my-lambda f)
-  42
-  )
-
-(define (negate-pred p?)
-  42
+(define (my-partially-apply f)
+  (λ (x y) ((curry f) x y))
   )
 
 (define (my-compose f g)
-  42
+  (λ (x) (f (g x)))
   )
 
-(define (partially-apply f x)
-  42
+(define (g p?)
+  (λ (x) (not (p? x)))
   )
+
+(define (f proc)
+  (λ (x) (proc x))
+  )
+
+((my-partially-apply remainder) 123 10)
+
+#|
+(define (my-identity)
+  (λ (x) x)
+  )
+
+((my-compose add1 sub1) 5)
+
+((g even?) 5)
 
 ; write 2 tests for subtask 1
+((my-identity) 5)
+((λ (x) x) 5)
 
-(= (my-identity 5) 5)
-
-(= ((my-lambda identity) 5) 5)
-(equal? ((my-lambda identity) "Tensorflow") "Tensorflow")
-(= ((my-lambda string-length) "Tensorflow") 10)
-
-(equal? ((negate-pred even?) 6) #f)
-
-(equal? ((my-compose even? string-length) "Tensorflow") #t)
-(equal? ((my-compose (λ (x) (- x 5)) (λ (y) (+ y 25))) 5) 25)
-
-(= ((partially-apply (λ (x y) (+ x y)) 5) 10) 15)
+((f add1) 5)
+|#
