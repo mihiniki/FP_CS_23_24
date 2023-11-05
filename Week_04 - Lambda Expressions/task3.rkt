@@ -1,11 +1,15 @@
 #lang racket
 
-; Define a procedure that returns
-; the first order derivative of an unary procedure "f" with precision "eps".
+#|
+Define a higher-order procedure
+that takes a unary procedure `f` and a binary procedure `g`
+and returns a binary procedure that evaluates
+the expression `g(f(x), f(y))`.
+|#
 
-(define (derive f eps)
-  (λ (x) (/ (- (f (+ x eps)) (f x)) eps))
+(define (higher-composed-eval f g)
+  (λ (x y) (g (f x) (f y)))
   )
 
-(= ((derive (λ (x) (* 2 x x x)) 1e-3) 2) 24.0120019999992)
-(= ((derive (λ (x) (* 2 x x x)) 1e-6) 2) 24.000012004421478)
+(= ((higher-composed-eval (λ (x) (* x 2)) +) 5 8) 26)
+(= ((higher-composed-eval (curry expt 10) remainder) 42.69 6) 536832)

@@ -1,33 +1,40 @@
 #lang racket
 
-; Define a higher order procedure repeater str
-; that accepts a string and returns
-; a linearly recursive procedure of
-; two arguments - count (number) and glue (string).
-; The result from a call to the result of repeater
-; should be a string that is str repeated count times
-; with glue being put between every two str instances.
+#|
+Define an iterative `folding` procedure. A `folding` procedure is a procedure that accepts:
 
-(define (repeater str)
-  (λ (count glue)
-    (if (= count 1)
-        str
-        (string-append str glue ((repeater str) (sub1 count) glue))
-     )
-    )
+- `f`: A binary procedure.
+- `acc`: The accumulated result. This is the `result` variable we use in our linearly iterative procedures.
+- `start`: The starting value of the range.
+- `end`: The ending value of the range.
+- `transform`: Unary procedure to transform the current value.
+- `next`: Unary procedure to generate the next value in the range.
+
+and calculates the expression
+
+`(f (transform start) (f (transform (next start)) ... (f (transform start) acc)))`
+
+Use it to evaluate the following expressions.
+|#
+
+(define (accumulate f acc start end transform next)
+  (if (> start end)
+      acc
+      (accumulate f (f (transform start) acc) (next start) end transform next)
+   )
   )
 
-(define (repeater2 str)
-  (λ (count glue)
-    (cond
-      [(zero? count) ""]
-      [(= count 1) str]
-      [else (string-append str glue ((repeater2 str) (sub1 count) glue))]
-     )
-    )
-  )
+; 1 + 2 + 3 + ... + 100
+(= (accumulate + 0 1 100 identity add1) 5050)
 
-((repeater "I love Racket") 3 " ")
+; 1 - (2 - (3 - (4 - 5)))
+(= (accumulate - 0 1 5 identity add1) 3)
 
-(equal? ((repeater2 "I love Racket") 3 " ") "I love Racket I love Racket I love Racket")
-(equal? ((repeater2 "Quack") 5 "!") "Quack!Quack!Quack!Quack!Quack")
+; 1 * 2 * 3 * ... * 10
+(= (accumulate * 1 1 10 identity add1) 3628800)
+
+; 1 * 3 * 5 * ... * 10
+(= (accumulate * 1 1 15 identity (curry + 2)) 2027025)
+
+; 1^2 + 3^2 + 5^2 + ... + 100^2
+(= (accumulate + 0 1 100 (λ (x) (expt x 2)) add1) 338350)
