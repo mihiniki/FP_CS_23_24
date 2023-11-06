@@ -3,15 +3,24 @@
 ; Define a procedure that returns the length of a list.
 
 (define (my-length-iter xs)
- 42
+ (define (helper res xs-copy)
+   (if (null? xs-copy)
+       res
+       (helper (add1 res) (cdr xs-copy))
+       )
+   )
+  (helper 0 xs)
   )
 
 (define (my-length-rec xs)
-  42
+  (if (null? xs)
+      0
+      (add1 (my-length-rec (cdr xs)))
+      )
   )
 
 (define (my-length-proc xs)
-  42
+  (length xs)
   )
 
 ; using an iterative procedure

@@ -3,19 +3,26 @@
 ; Define a procedure that returns the smallest element of a list.
 
 (define (get-smallest-rec xs)
- 42
+ (define (helper res copy-xs)
+   (cond
+     [(null? copy-xs) res]
+     [(< (car copy-xs) res) (helper (car copy-xs) (cdr copy-xs))]
+     [else (helper res (cdr copy-xs))]
+     )
+   )
+  (helper (car xs) xs)
   )
 
 (define (get-smallest-proc xs)
-  42
+  (apply min xs)
   )
 
 (define (get-smallest-fold-proc xs)
-  42
+  (foldl min (car xs) xs)
   )
 
 (define (get-smallest-fold-no-proc xs)
-  42
+  (foldl (λ (x y) (if (< x y) x y)) (car xs) xs)
   )
 
 ;acc=1

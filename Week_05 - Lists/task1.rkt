@@ -13,7 +13,7 @@ the result should be '("" "0" "one" "two" "five" "onehundred" "one hundred").
 |#
 
 (define (sort-list xs)
-  42
+  (λ (p?) (sort xs p?))
   )
 
 (equal?
