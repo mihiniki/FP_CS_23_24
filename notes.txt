@@ -536,12 +536,12 @@ Types
 				use only "/" (equivalent to "/" in C++, but here it cannot be used for whole numbers)
 
 		power
-			use n ^ m  when m is a natural number (i.e. m > 0) (ex. 2 ^ 3 == 8)
-			use n ** m when m is a floating-point number (ex. 2 ** 0.5 == 1.4142135623730951)
+			use n^m  when m is a natural number (i.e. m > 0) (ex. 2^3 == 8)
+			use n**m when m is a floating-point number (ex. 2**0.5 == 1.4142135623730951)
 
 		other: min, max, odd, even, gcd, abs, sqrt (sqrt 2 == 1.4142135623730951; sqrt :: Double -> Double)
 
-		❗❗❗ Int => Double: fromIntegral           (ex. if a is 5, then (fromIntegral a) is 5.0)  ❗❗❗
+		❗❗❗ Int => Double: fromIntegral           (ex. if x is 5, then (fromIntegral x) is 5.0)  ❗❗❗
 		❗❗❗ Double => Int: ceiling, floor, round, truncate  (ex. round 5.45 == 5)                ❗❗❗
 		❗❗❗ != (C++) => /= (Haskell)              (ex. 5 /= 5 is False; True /= False is True)   ❗❗❗
 
@@ -695,11 +695,11 @@ Types
 		- (\ <parameters> -> <function application>)
 
 	- a lambda that adds 5 to a number:
-		???
+		(\ x -> x + 5)
 	- a lambda-predicate that checks whether a number is greater than 10:
-		???
+		(\ x -> x > 10)
 	- a lambda which adds three numbers:
-		???
+		(\ x y z -> x + y + z)
 
 
 	################################################################################
@@ -713,6 +713,55 @@ Types
 		any    (\ x -> odd x)          [2, 4, 6]    => False
 		any    (\ x -> mod x 10 == 0)  [20, 44, 61] => True
 
+
+########################################################################################################################
+# Week_09 - Lists and Tuples
+########################################################################################################################
+
+
+	# Tuples (Vectors) (Ordered pairs)
+
+		- data structures whose size has to be explicitly stated (analogy with array in C++)
+		- can hold multiple types (ex. x :: (Int, String, [Double]) is a vector with 3 dimensions)
+		- fst (5, 6) => 5
+		- snd (5, 6) => 6
+
+		Examples:
+		a vector with two coordinates representing a point in 2D space:
+		type Point2D = (Int, Int)
+		-- typedef std::pair<int, int> Point2D;
+
+		Now every function that accepts a Point2D will look like this:
+
+		helper :: Point2D -> Int -- instead of (Int, Int) -> Int
+		helper (x, y) = x + y -- this function sums up the coordinates. Notice the pattern matching!
+		-- helper x = fst x + snd x
+
+		Notice:
+		type String = [Char]
+
+
+	# Typeclasses
+
+		We can say that a function should accept numbers in general, not only Int or Double.
+
+		Example:
+
+		old:
+		helper :: Int -> Int
+
+		new:
+		helper :: (Num a, Num b) => a -> b
+
+		Some useful Typeclasses:
+			- if only numbers then Num
+			- if ==, /= then Eq
+			- if <, <=, >=, > then Ord
+			- if only Float and Double then Fractional
+			- if only Int and Integer then Integral
+			- if making an algebraic type that has to be printed then Show
+
+		In most cases the compiler will help us. We'll demonstrate how this works today!
 
 
 
