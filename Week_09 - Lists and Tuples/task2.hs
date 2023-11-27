@@ -4,4 +4,15 @@ main = do
     print $ addOneNPA 5 == 6
     print $ sqPlusOne 5 == 26
 
+addOneXsPA :: (Num a) => [a] -> [a]
+-- addOneXsPA xs = map (\ x -> x + 1) xs
+addOneXsPA = map (+1) 
+
+addOneNPA :: (Num a) => a -> a
+addOneNPA = (+ 1)
+
+sqPlusOne :: (Num a) => a -> a
+sqPlusOne  = (+1) . (^2)
+
+
 
