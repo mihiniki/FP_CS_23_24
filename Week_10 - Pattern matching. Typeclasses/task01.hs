@@ -34,7 +34,41 @@ main = do
     print $ join [[1, 2], [5, 6], [9]] == [1, 2, 5, 6, 9]
     print $ join [['H'], ['a', 's'], "kell"] == "Haskell"
 
-    print $ joinFold [[1, 2], [5, 6], [9]] == [1, 2, 5, 6, 9]
-    print $ joinFold [['H'], ['a', 's'], "kell"] == "Haskell"
+    
+
+isNull :: [a] -> Bool
+isNull [] = True
+isNull xs = False
+-- isNull _ = False
+
+firstEl :: [a] -> a
+firstEl [] = error "Empty list!"
+firstEl (x:xs) = x
+-- firstEl (x:_) = x
+
+removeFirst :: [a] -> [a]
+removeFirst [] = []
+removeFirst (_:xs) = xs
+
+fromXs :: Int -> [a] -> [a]
+fromXs _ [] = []
+fromXs 0 xs = xs
+fromXs n (x:xs) = fromXs (n - 1) xs
+
+concatenate :: [a] -> [a] -> [a]
+concatenate [] ys = ys
+concatenate xs [] = xs
+concatenate (x:xs) ys = x : concatenate xs ys
+
+join :: [[a]] -> [a]
+join [] = []
+join (xs:xss) = xs ++ join xss
+
+joinFold :: [[a]] -> [a]
+joinFold xss = foldl (\ xs acc -> xs ++ acc) [] xss
+-- joinFold xss = foldl (++) [] xss
+-- joinFold xss = foldl1 (++)
+
+
 
 

@@ -11,13 +11,21 @@ and y is the remainder.
 
 main :: IO()
 main = do
-    print $ divideNoPM (10, 5) == (2, 0) -- 10 / 5 = 2 and 10 % 5 = 0
+    print $ divideNoPM (10, 5) == (2, 0) -- div 10 5 = 2 and 10 % 5 = 0
     print $ divideNoPM (69, 42) == (1, 27)
 
     print $ dividePM (10, 5) == (2, 0)
     print $ dividePM (69, 42) == (1, 27)
 
-    print $ ??? (10, 5) == (2, 0)
-    print $ ??? (69, 42) == (1, 27)
+    print $ (\ (a, b) -> (div a b, mod a b)) (10, 5) == (2, 0)
+    print $ (\ (a, b) -> (div a b, mod a b)) (69, 42) == (1, 27)
+
+divideNoPM :: (Int, Int) -> (Int, Int)
+divideNoPM tuple = (div (fst tuple) (snd tuple), mod (fst tuple) (snd tuple))
+
+dividePM :: (Int, Int) -> (Int, Int)
+dividePM (a, b) = (div a b, mod a b)
+
+
 
 
