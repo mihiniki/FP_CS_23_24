@@ -12,7 +12,7 @@ data BTree = Nil | Node Int (BTree) (BTree)
  deriving (Show, Eq)
 
 insert :: BTree -> Int -> BTree
-insert Nil v = Node v Nil Nil
+insert Nil v = Node v Nil Nil 
 insert (Node value left right) v
  | v > value = Node value left (insert right v)
  | otherwise = Node value (insert left v) right 
